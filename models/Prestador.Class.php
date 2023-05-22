@@ -3,22 +3,20 @@
     {
         public function __construct(
             private int $idPrestador = 0,
-            private string $NomePrestador = "",
-            private string $DataNascimento = "",
+            private string $Nome = "",
+            private string $DtNasc = "",
             private string $Celular = "",
             private string $Email = "",
             private string $Senha = "",
-            private string $Situacao = "", 
+            private string $Status = "", 
             private array $Servico = array(),
-            private $Empresa = null
-        )
-        {
+            private $Empresa = null,
             
-        }
+        ){}
+
+        
 
           
-
-           
 
             /**
              * Get the value of idPrestador
@@ -39,37 +37,37 @@
             }
 
             /**
-             * Get the value of NomePrestador
+             * Get the value of Nome
              */
-            public function getNomePrestador(): string
+            public function getNome(): string
             {
-                        return $this->NomePrestador;
+                        return $this->Nome;
             }
 
             /**
-             * Set the value of NomePrestador
+             * Set the value of Nome
              */
-            public function setNomePrestador(string $NomePrestador): self
+            public function setNome(string $Nome): self
             {
-                        $this->NomePrestador = $NomePrestador;
+                        $this->Nome = $Nome;
 
                         return $this;
             }
 
             /**
-             * Get the value of DataNascimento
+             * Get the value of DtNasc
              */
-            public function getDataNascimento(): string
+            public function getDtNasc(): string
             {
-                        return $this->DataNascimento;
+                        return $this->DtNasc;
             }
 
             /**
-             * Set the value of DataNascimento
+             * Set the value of DtNasc
              */
-            public function setDataNascimento(string $DataNascimento): self
+            public function setDtNasc(string $DtNasc): self
             {
-                        $this->DataNascimento = $DataNascimento;
+                        $this->DtNasc = $DtNasc;
 
                         return $this;
             }
@@ -129,19 +127,19 @@
             }
 
             /**
-             * Get the value of Situacao
+             * Get the value of Status
              */
-            public function getSituacao(): string
+            public function getStatus(): string
             {
-                        return $this->Situacao;
+                        return $this->Status;
             }
 
             /**
-             * Set the value of Situacao
+             * Set the value of Status
              */
-            public function setSituacao(string $Situacao): self
+            public function setStatus(string $Status): self
             {
-                        $this->Situacao = $Situacao;
+                        $this->Status = $Status;
 
                         return $this;
             }
@@ -182,7 +180,4 @@
                         return $this;
             }
     }
-
-
-
 ?>

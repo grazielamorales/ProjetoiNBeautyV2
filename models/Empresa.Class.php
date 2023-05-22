@@ -1,44 +1,25 @@
-<?php
-    class Empresa
-    {
+<?php 
+    Class Empresa{
         public function __construct(
-            $idPrestador,
-            $NomePrestador,
-            $DataNascimento,
-            $Celular,
-            $Email_prestador,
-            $Senha,
-            $Situacao_prestador, 
-            $Servico,
-            $Empresa,
             private int $idEmpresa = 0,
-            private string $NomeEmpresa = "",
+            private string $NomeFantasia = "",
+            private string $RazaoSocial = "",
+            private string $Cnpj = "",
             private string $Logradouro = "",
+            private string $Num = "",
+            private string $Bairro = "",
             private string $Cep = "",
             private string $Cidade = "",
             private string $Uf = "",
-            private string $Telefone = "",
-            private string $Email_empresa = "",
-            private string $Situacao = "",
-            private string $HorarioFuncionamento = "",
-            private array $Prestador = array()
-        )
-        {
-            $this->Prestador[] = new Prestador(
-            $idPrestador,
-            $NomePrestador,
-            $DataNascimento ,
-            $Celular,
-            $Email_prestador,
-            $Senha,
-            $Situacao_prestador, 
-            array($Servico),
-            $Empresa
-            );
-        }
-        
-        
+            private string $Fone = "",
+            private string $Email = "",
+            private string $Senha = "",
+            private string $Status = "",
+            private $prestador = array(),
 
+        ){}
+
+        
 
             /**
              * Get the value of idEmpresa
@@ -61,61 +42,53 @@
             /**
              * Get the value of NomeFantasia
              */
-            public function getNomeEmpresa(): string
+            public function getNomeFantasia(): string
             {
-                        return $this->NomeEmpresa;
-            }
-
-
-            /**
-             * Get the value of Teleone Empresa
-             */
-            public function getTelefone(): string
-            {
-                        return $this->Telefone;
+                        return $this->NomeFantasia;
             }
 
             /**
-             * Set the value of Telefone Empresa
+             * Set the value of NomeFantasia
              */
-            public function setTelefone(string $Telefone): self
+            public function setNomeFantasia(string $NomeFantasia): self
             {
-                        $this->Telefone = $Telefone;
+                        $this->NomeFantasia = $NomeFantasia;
 
                         return $this;
             }
 
-            /**Get Celular */
-            public function getCelular(): string
+            /**
+             * Get the value of RazaoSocial
+             */
+            public function getRazaoSocial(): string
             {
-                        return $this->Celular;
+                        return $this->RazaoSocial;
             }
 
             /**
-             * Set the value of Celular Empresa
+             * Set the value of RazaoSocial
              */
-            public function setCelular(string $Celular): self
+            public function setRazaoSocial(string $RazaoSocial): self
             {
-                        $this->Celular = $Celular;
+                        $this->RazaoSocial = $RazaoSocial;
 
                         return $this;
             }
 
-
             /**
-             * Get the value of Email
+             * Get the value of Cnpj
              */
-            public function getEmail_empresa(): string
+            public function getCnpj(): string
             {
-                return $this->Email_empresa;
+                        return $this->Cnpj;
             }
 
             /**
-             * Set the value of Email
+             * Set the value of Cnpj
              */
-            public function setEmail_empresa(string $Email_empresa): self
+            public function setCnpj(string $Cnpj): self
             {
-                        $this->Email_empresa = $Email_empresa;
+                        $this->Cnpj = $Cnpj;
 
                         return $this;
             }
@@ -138,8 +111,42 @@
                         return $this;
             }
 
-            
-            
+            /**
+             * Get the value of Num
+             */
+            public function getNum(): string
+            {
+                        return $this->Num;
+            }
+
+            /**
+             * Set the value of Num
+             */
+            public function setNum(string $Num): self
+            {
+                        $this->Num = $Num;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of Bairro
+             */
+            public function getBairro(): string
+            {
+                        return $this->Bairro;
+            }
+
+            /**
+             * Set the value of Bairro
+             */
+            public function setBairro(string $Bairro): self
+            {
+                        $this->Bairro = $Bairro;
+
+                        return $this;
+            }
+
             /**
              * Get the value of Cep
              */
@@ -195,75 +202,95 @@
             }
 
             /**
-             * Get the value of Situacao
+             * Get the value of Fone
              */
-            public function getSituacao(): string
+            public function getFone(): string
             {
-                        return $this->Situacao;
+                        return $this->Fone;
             }
 
             /**
-             * Set the value of Situacao
+             * Set the value of Fone
              */
-            public function setSituacao(string $Situacao): self
+            public function setFone(string $Fone): self
             {
-                        $this->Situacao = $Situacao;
+                        $this->Fone = $Fone;
 
                         return $this;
             }
 
             /**
-             * Get the value of HorarioFuncionamento
+             * Get the value of Email
              */
-            public function getHorarioFuncionamento(): string
+            public function getEmail(): string
             {
-                        return $this->HorarioFuncionamento;
+                        return $this->Email;
             }
 
             /**
-             * Set the value of HorarioFuncionamento
+             * Set the value of Email
              */
-            public function setHorarioFuncionamento(string $HorarioFuncionamento): self
+            public function setEmail(string $Email): self
             {
-                        $this->HorarioFuncionamento = $HorarioFuncionamento;
+                        $this->Email = $Email;
 
                         return $this;
             }
 
             /**
-             * Get the value of Prestador
+             * Get the value of Senha
              */
-            public function getPrestador(): array
+            public function getSenha(): string
             {
-                        return $this->Prestador;
+                        return $this->Senha;
             }
 
             /**
-             * Set the value of Prestador
+             * Set the value of Senha
              */
-            public function setPrestador($idPrestador,
-            $NomePrestador,
-            $DataNascimento ,
-            $Celular,
-            $Email_prestador,
-            $Senha,
-            $Situacao, 
-            $Servico,
-            $Empresa):self
+            public function setSenha(string $Senha): self
             {
-                        $this->Prestador[] =new Prestador($idPrestador,
-            $NomePrestador,
-            $DataNascimento ,
-            $Celular,
-            $Email_prestador,
-            $Senha,
-            $Situacao, 
-            $Servico,
-            $Empresa);
+                        $this->Senha = $Senha;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of Status
+             */
+            public function getStatus(): string
+            {
+                        return $this->Status;
+            }
+
+            /**
+             * Set the value of Status
+             */
+            public function setStatus(string $Status): self
+            {
+                        $this->Status = $Status;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of prestador
+             */
+            public function getPrestador()
+            {
+                        return $this->prestador;
+            }
+
+            /**
+             * Set the value of prestador
+             */
+            public function setPrestador($prestador): self
+            {
+                        $this->prestador = $prestador;
 
                         return $this;
             }
     }
-
-
 ?>
+
+

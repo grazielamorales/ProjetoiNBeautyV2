@@ -8,8 +8,7 @@
             private string $DataNascimento = "",
             private string $Celular = "",
             private string $Email = "",
-            private string $Senha = "",
-            private string $Tipo = "",
+            private string $Senha = "",          
             private string $Situacao = "", 
             private string $Apelido = "",
             private string $Sexo = ""
@@ -143,25 +142,7 @@
 
                         return $this;
             }
-
-            /**
-             * Get the value of Tipo
-             */
-            public function getTipo(): string
-            {
-                        return $this->Tipo;
-            }
-
-            /**
-             * Set the value of Tipo
-             */
-            public function setTipo(string $Tipo): self
-            {
-                        $this->Tipo = $Tipo;
-
-                        return $this;
-            }
-
+            
             /**
              * Get the value of Situacao
              */
