@@ -13,16 +13,16 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/eefac6c057.js" crossorigin="anonymous"></script>
     <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"-->   
     <title>INBEAUTY - HeaderUsuario</title>
-    <link rel="stylesheet" href="../assets/css/style2.css">
+    <link rel="stylesheet" href="assets/css/style2.css">
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /-->
     <style>
         #bkg-img{   
             font-family: "Helvetica Neue",Helvetica,Arial;         
             color: #fff;
-            background-image: url("../assets/images/bkg.jpeg");
+            background-image: url("assets/images/bkg.jpeg");
             background-repeat: no-repeat;
             background-attachment: scroll;
             background-position: center;
@@ -31,6 +31,7 @@
         #bkg-img li, p{
             font-size:25px
         }
+		.erro{color:red;font-size:11px;}
     </style>
 
 
@@ -42,28 +43,8 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">           
-            
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Usuario Logado
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"></a></li>
-                <li><a class="dropdown-item" href="#">Minha Agenda</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Minha Conta</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
-            </ul>
-            </li>
-           
-        </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Digite o Serviço" aria-label="search">
-            <button class="btn btn-outline-light me-5" type="submit">BUSCAR</button>
-        </form>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">        
+       
         </div>
     </div>
     </nav>
@@ -79,7 +60,7 @@
                         <li>Acesse a agenda do salão 24h para marcar seu horário</li>
                         <li>Receba lembredetes dos seus agendamentos</li>                       
                     </ul>   
-                    <p>Preenca o formulário ao lado e cadastre-se gratuitamente!</p>
+                    <p>Preencha o formulário ao lado e cadastre-se gratuitamente!</p>
                 </div>  
 
             </div>
@@ -90,57 +71,66 @@
                         <h2>Cadastre-se</h2>
                     </div>
                     
-                    <div class="card-body">
+                    <div class="card-body"-->
                         <form action="#" method="post">
                         <div class="row">
                             <!--Nome e Nome de usuário-->               
                             <div class="col-6">
                                     <label class="label" for="nome">Nome Completo</label>
-                                    <input class="form-control" type="text" required>
+                                    <input class="form-control" type="text" name="Nome" value="<?php echo isset($_POST['Nome'])?$_POST['Nome']:''; ?>">
                             </div>
                             <div class="col-6">                   
                                 <label class="label" for="Apelido">Nome do usuário</label>
-                                <input class="form-control" type="text" required>
+                                <input class="form-control" type="text" name="Apelido" value="<?php echo isset($_POST['Apelido'])?$_POST['Apelido']:''; ?>">
                             </div>
-
+							<div class="col-6 erro"><?php echo $msg[0] != ""?$msg[0]:""?></div>
+							<div class="col-6"></div>
                             <!--CPF e Celular-->                
                             <div class="col-6 mt-3">
                                 <label class="label" for="Cpf">CPF</label>
-                                <input class="form-control" type="text" required>
+                                <input class="form-control" type="text" name="Cpf" value="<?php echo isset($_POST['Cpf'])?$_POST['Cpf']:''; ?>">
                             </div>
+							
                             <div class="col-6 mt-3">                   
                                 <label class="label" for="Celular">Celular</label>
-                                <input class="form-control" type="text" required>
+                                <input class="form-control" type="text" name="Celular" value="<?php echo isset($_POST['Celular'])?$_POST['Celular']:''; ?>">
                             </div>
-
-                            <!--Sexo-->   
-                            <div class="col-12 mt-3">
+							<div class="col-6 erro"><?php echo $msg[1] != ""?$msg[1]:""?></div>
+							<div class="col-6 erro"><?php echo $msg[2] != ""?$msg[2]:""?></div>
+                            <!--Sexo e Data de Nascimento-->   
+                            <div class="col-6 mt-3">
+							<label class="label" for="Sexo">Sexo</label>
                                 <select class="form-select "  name="Sexo" id="sexo">
-                                    <option value="">Sexo</option>
+                                    <option value="">Selecione</option>
                                     <option value="feminino"> Feminino</option>
                                     <option value="masculino"> Masculino</option>
                                 </select>
-                            
                             </div>
-                                        
+                            <div class="col-6 mt-3">     
+                                <label class="label" for="DataNascimento">Data de Nascimento</label>
+                                <input class="form-control" type="date" name="DataNascimento" value="<?php echo isset($_POST['DataNascimento'])?$_POST['DataNascimento']:''; ?>">
+                            </div>  
+							<div class="col-6 erro"><?php echo $msg[3] != ""?$msg[3]:""?></div>
+							<div class="col-6 erro"><?php echo $msg[4] != ""?$msg[4]:""?></div>							
                             <!--Email e Senha-->
                             <div class="col-06 mt-3">
                                     <label class="label" for="Email">E-mail</label>
-                                    <input class="form-control" type="email" required>
+                                    <input class="form-control" type="email" name="Email" value="<?php echo isset($_POST['Email'])?$_POST['Email']:''; ?>">
                             </div>
-
-                            <div class="col-6 mt-3">                   
+							<div class="col-12 erro"><?php echo $msg[5] != ""?$msg[5]:""?></div>
+							<div class="col-6 mt-3">     
                                 <label class="label" for="Senha">Senha</label>
-                                <input class="form-control" type="password" required>
+                                <input class="form-control" type="password" name="Senha">
                             </div>
-                            <div class="col-6 mt-3">                   
+                            <div class="col-6 mt-3">     
                                 <label class="label" for="Confsenha">Confirme a Senha</label>
-                                <input class="form-control" type="password" required>
+                                <input class="form-control" type="password" name="Confsenha">
                             </div>
-                            
+                            <div class="col-6 erro"><?php echo $msg[6] != ""?$msg[6]:""?></div>
+							<div class="col-6 erro"><?php echo $msg[7] != ""?$msg[7]:""?></div>
                             <div class="col-12 mt-5">
                                 <button type="submit" class="btn btn-success" name="action">Enviar</button>   
-                                <button type="reset" class="btn btn-danger">Cancelar</button>                                
+                                <button type="reset" class="btn btn-danger">Cancelar</button>                 
                             </div>                 
                             
                         </div>               

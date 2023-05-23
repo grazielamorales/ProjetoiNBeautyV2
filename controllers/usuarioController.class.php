@@ -17,7 +17,7 @@
         
         public function inserir()
 		{
-			$msg = array("","","","");
+			$msg = array("","","","","","","","","");
 			$erro = false;
 			if($_POST)
 			{
@@ -28,53 +28,77 @@
 					$erro = true;
 				}
 				
+				if(empty($_POST["Cpf"]))
+				{
+					$msg[1] = "Preencha o seu CPF";
+					$erro = true;
+				}
+				if(empty($_POST["Celular"]))
+				{
+					$msg[2] = "Preencha o seu celular";
+					$erro = true;
+				}
+				if($_POST["Sexo"] == "")
+				{
+					$msg[3] = "Selecione o sexo";
+					$erro = true;
+				}
+				
+				if(empty($_POST["DataNascimento"]))
+				{
+					$msg[4] = "Preencha a Data";
+					$erro = true;
+				}
+				
 				if(empty($_POST["Email"]))
 				{
-					$msg[1] = "Preencha o seu e-mail";
+					$msg[5] = "Preencha o seu e-mail";
 					$erro = true;
 				}
 				if(empty($_POST["Senha"]))
 				{
-					$msg[2] = "Preencha a senha";
+					$msg[6] = "Preencha a senha";
 					$erro = true;
 				}
 				if(empty($_POST["Confsenha"]))
 				{
-					$msg[3] = "Preencha a confirmação da senha";
+					$msg[7] = "Preencha a confirmação da senha";
 					$erro = true;
 				}
 				
 				if(!empty($_POST["Senha"]) && !empty($_POST["Confsenha"]))
 				{
-					if($_POST["senha"] != $_POST["confsenha"])
+					if($_POST["Senha"] != $_POST["Confsenha"])
 					{
-						$msg[2] = "Senhas não conferem";
+						$msg[6] = "Senhas não conferem";
 						$erro = true;
 					}
 				}
-				if(!empty($_POST["email"]))
+				if(!empty($_POST["Email"]))
 				{
 					$usuario = new usuario(Email:$_POST["Email"]);
 					$usuarioDAO = new usuarioDAO($this->param);
 					$retorno = $usuarioDAO->verificar_por_email($usuario);
 					if(count($retorno) > 0)
 					{
-						$msg[1] = "E-mail já cadastrado";
+						$msg[5] = "E-mail já cadastrado";
 						$erro = true;
 					}
 				}
 				//se tudo certo
+				
 				if(!$erro)
 				{
+					
 					//inserir BD
-					$usuario = new usuario(0, $_POST["Nome"], $_POST["Email"], md5($_POST["Senha"]), "Usuario");
+					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"], $_POST["Senha"], $Situacao="Ativo", $_POST["Apelido"], $_POST['Sexo']);
 					
 					$usuarioDAO = new usuarioDAO($this->param);
 					
 					$usuarioDAO->inserir($usuario);
 					
 					//mostrar login
-					//header("location:index.php?controle=usuarioController&metodo=login");
+					header("location:index.php?controle=usuarioController&metodo=login");
 				}
 			}
 			require_once "views/formCadastroUsuario.php";
@@ -82,7 +106,7 @@
 
         public function login(){
 
-            $msg = "";
+			$msg = "";
             if($_POST)
             {                   
                 //verificar preenchimento
@@ -119,8 +143,9 @@
                         $msg = "Verificar os dados digitados";
                     }
                 }
-                require_once "views/loginUsuario.php";
+                
             }
+			require_once "views/loginUsuario.php";
         }
 
         public function logout()

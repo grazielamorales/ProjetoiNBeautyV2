@@ -15,25 +15,24 @@
 		}
 		public function inserir($usuario)
 		{
-			$sql = "INSERT INTO usuario (Nome, Cpf, DataNascimento, Celular, Email, Senha, Tipo, Situacao, Apelido, Sexo) VALUES(?,?,?,?,?,?,?,?,?,?)";
+			$sql = "INSERT INTO usuario (Nome, Cpf, DataNascimento, Celular, Email, Senha, Situacao, Apelido, Sexo) VALUES(?,?,?,?,?,?,?,?,?)";
 			$stm = $this->conexao->prepare($sql);
 			$stm->bindValue(1, $usuario->getNome());
 			$stm->bindValue(2, $usuario->getCpf());
 			$stm->bindValue(3, $usuario->getDataNascimento());
 			$stm->bindValue(4, $usuario->getCelular());
 			$stm->bindValue(5, $usuario->getEmail());
-			$stm->bindValue(6, $usuario->getSenha());
-			$stm->bindValue(7, $usuario->getTipo());
-			$stm->bindValue(8, $usuario->getSituacao());
-			$stm->bindValue(9, $usuario->getApelido());
-			$stm->bindValue(10, $usuario->getSexo());
+			$stm->bindValue(6, $usuario->getSenha());			
+			$stm->bindValue(7, $usuario->getSituacao());
+			$stm->bindValue(8, $usuario->getApelido());
+			$stm->bindValue(9, $usuario->getSexo());
 			$stm->execute();
 			$this->conexao = null;
 		}
 
 		public function verificar_por_email($usuario)
 		{
-			$sql = "SELECT email FROM usuario WHERE email = ?";
+			$sql = "SELECT Email FROM usuario WHERE Email = ?";
 			try
 			{
 				$stm = $this->conexao->prepare($sql);

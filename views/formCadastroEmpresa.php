@@ -79,7 +79,7 @@
                 </div>
                 <span><?php echo $msg;?></span>
                 <div class="col-12 mt-5">
-                    <button type="submit" class="btn btn-outline-success" name="action">Enviar</button>   
+                    <button type="submit" class="btn btn-success" name="action">Enviar</button>   
                     <button type="reset" class="btn btn-danger">Cancelar</button>                                
                 </div>                 
                 
