@@ -91,7 +91,7 @@
 				{
 					
 					//inserir BD
-					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"], $_POST["Senha"], $Situacao="Ativo", $_POST["Apelido"], $_POST['Sexo']);
+					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"],$_POST["Senha"], $Situacao="Ativo", $_POST["Apelido"], $_POST['Sexo']);
 					
 					$usuarioDAO = new usuarioDAO($this->param);
 					
@@ -110,17 +110,17 @@
             if($_POST)
             {                   
                 //verificar preenchimento
-                if($_POST["Email"] == "" || $_POST["Senha"] == "")
-                {
+               if($_POST["Email"] == "" || $_POST["Senha"] == "")
+               {
                     $msg ="Dados Obrigatórios";
-                }                
+               }                
                 
                 //se não tiver erro 
             
                 if($msg ==  "")
                 {                    
                     //verificar usuario e senha no BD
-                    $usuario = new Usuario(Email:$_POST["Email"], Senha:md5($_POST["Senha"]));
+                    $usuario = new Usuario(Email:$_POST["Email"], Senha:$_POST["Senha"]);
                     
                     $usuarioDAO = new UsuarioDAO($this->param);
                     $retorno = $usuarioDAO->autenticar($usuario);
@@ -142,7 +142,7 @@
                     {
                         $msg = "Verificar os dados digitados";
                     }
-                }
+				}
                 
             }
 			require_once "views/loginUsuario.php";
@@ -155,8 +155,6 @@
             header("location:index.php");
         }       
         
-        public function cadastrar(){
-
-        }
+        
     }
 ?>

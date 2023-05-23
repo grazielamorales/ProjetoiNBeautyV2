@@ -31,8 +31,8 @@
 <div class="container ">
     <div class="card col-5 offset-3 mt-3 mb-3">
         <div class="card-header text-center">            
-            <h2 style="font: size 2em; font-weight: 800;">ENTRAR</h2>        
-                     
+            <h2 style="font: size 2em; font-weight: 800;">ENTRAR</h2>   
+            
         </div>        
         
         <div class="card-body">
@@ -49,8 +49,7 @@
                 <div class="col-8 offset-2 mt-5 mb-5">
                     <button type="submit" class="btn btn-success" name="action">Enviar</button>   
                     <button type="reset" class="btn btn-danger">Cancelar</button>                                
-                </div>  
-                
+                </div>                  
             </form>
         </div>
     </div>
