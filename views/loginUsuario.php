@@ -50,14 +50,14 @@
         
         <div class="card-body text-start">
             <form action="#" method="post">            
-                 <!--Email e Senha-->
+                 <!--Email e Senha-->                 
                  <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-3">
-                        <label class="label" for="Email">Email</label>
-                        <input class="form-control" type="email" required>
+                    <label class="label" for="Email">Email</label>
+                    <input class="form-control" type="email" name="Email" required>
                 </div>
                 <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-3">                   
                     <label class="label" for="Senha">Senha</label>
-                    <input class="form-control" type="password" required>
+                    <input class="form-control" type="password" name="Senha" required>
                 </div>
                 <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-5 mb-5 ">
                     <button type="submit" class="btn btn-dark btn-lg" name="action" style="background-color:#ed563b">ENTRAR</button>   

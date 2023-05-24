@@ -5,7 +5,7 @@
 		
 		public function autenticar($usuario)
 		{
-			$sql = "SELECT idUsuario, Nome, Tipo FROM usuario WHERE Email = ? AND Senha = ?";
+			$sql = "SELECT idUsuario, Nome FROM usuario WHERE Email = ? AND Senha = ?";
 			$stm = $this->conexao->prepare($sql);
 			$stm->bindValue(1, $usuario->getEmail());
 			$stm->bindValue(2, $usuario->getSenha());

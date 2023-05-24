@@ -1,3 +1,8 @@
+    <?php 
+         if(!isset($_SESSION))
+		session_start();
+
+    ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,21 +38,22 @@
             
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Usuario Logado
+            <i class="fa-solid fa-user fa-2xl" style="color: #ed563b;"></i>
+               <?php echo $usuario?>
             </a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#"></a></li>
                 <li><a class="dropdown-item" href="#">Minha Agenda</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Minha Conta</a></li>
+                <li><a class="dropdown-item" href="index.php?controle=usuarioController&metodo=editarUsuario">Minha Conta</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
+                <li><a class="dropdown-item" href="index.php?controle=usuarioController&metodo=logout">Sair</a></li>
             </ul>
             </li>
            
         </ul>
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Digite o Serviço" aria-label="search">
+            <input class="form-control me-2" type="search" placeholder="Serviço ou profissional" aria-label="search">
             <button class="btn btn-outline-light me-5" type="submit">BUSCAR</button>
         </form>
         </div>

@@ -3,6 +3,8 @@
     require_once "models/Conexao.class.php";
     require_once "models/usuario.class.php";
     require_once "models/usuarioDAO.class.php";
+	require_once "models/Servico.Class.php";
+	require_once "models/servicoDAO.class.php";
 
     if(!isset($_SESSION))
 		session_start();
@@ -91,7 +93,7 @@
 				{
 					
 					//inserir BD
-					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"],$_POST["Senha"], $Situacao="Ativo", $_POST["Apelido"], $_POST['Sexo']);
+					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"],md5($_POST["Senha"]), $Situacao="Ativo", $_POST["Apelido"], $_POST['Sexo']);
 					
 					$usuarioDAO = new usuarioDAO($this->param);
 					
@@ -109,11 +111,16 @@
 			$msg = "";
             if($_POST)
             {   
-				if (isset($_POST["Email"]) && isset($_POST["Senha"]) != "")
-				{     
-                
+				//verificar preenchimento
+				if($_POST["Email"] == "" || $_POST["Senha"] == "")
+				{
+					$msg ="Dados Obrigatórios";
+				}
+				
+				//se não tiver erro
+				if($msg == ""){
 					//verificar usuario e senha no BD
-					$usuario = new Usuario(Email:$_POST["Email"], Senha:$_POST["Senha"]);
+					$usuario = new Usuario(Email:$_POST["Email"], Senha:md5($_POST["Senha"]));
 					
 					$usuarioDAO = new UsuarioDAO($this->param);
 					$retorno = $usuarioDAO->autenticar($usuario);
@@ -122,7 +129,8 @@
 					{
 						//é um usuário
 						// vamos guardar dados na sessão
-											
+
+						session_start();					
 						$_SESSION["idUsuario"] = $retorno[0]->idUsuario;
 						
 						$_SESSION["Nome"] = $retorno[0]->Nome;
@@ -130,12 +138,15 @@
 						$_SESSION["Email"] = $retorno[0]->Email;
 					
 						
-						header("location:homeUsuario.php");
+						header("location:index.php?controle=usuarioController&metodo=home&id=".$retorno[0]->idUsuario.$retorno[0]->Nome);
 						
-					}      
-					
-				}
-				
+					}
+					else
+					{
+						$msg = "Senha ou usuário inválido!";
+					}  
+				 
+				}  			
 			}
 			require_once "views/loginUsuario.php";
 		}
@@ -145,8 +156,25 @@
             $_SESSION = array();
             session_destroy();
             header("location:index.php");
-        }       
+        }  
+
+		public function home(){
+			if(isset($_SESSION["idUsuario"])){
+				$usuario = $_SESSION["Nome"];
+
+				$servicoDAO = new ServicoDAO($this->param);
+				$retorno = $servicoDAO->buscarTodoServicos();
+
+				
+			}
+			
+			require_once "views/homeUsuario.php";
+		}
+
+			
+
+	}     
         
         
-    }
+    
 ?>

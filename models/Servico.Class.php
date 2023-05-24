@@ -4,7 +4,7 @@
         public function __construct(
             private int $idServico = 0,
             private string $descritivo = "",
-            private float $preco= "",
+            private float $preco= 0,
             private string $tempoEstim = "",
             private array $cliente = array()
             

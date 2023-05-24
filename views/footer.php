@@ -13,15 +13,15 @@
 
 </body>
 <footer class="footer py-4">
-        <div class="container" id="cont-foot">
+        <div class="container-md" id="cont-foot">
             <div class="row align-items-center">
-                <div class="col-lg-3 text-fs-sm-start">Copyright &copy; Sistemas para Internet  Fatec/Jahu - 2023/5º Semestre GM</div>
-                <div class="col-lg-3 my-3 my-lg-0">
+                <div class="col-md-3 text-fs-sm-start">Copyright &copy; Sistemas para Internet  Fatec/Jahu - 2023/5º Semestre GM</div>
+                <div class="col-md-3 my-3 my-lg-0">
                     <a class="btn btn-dark btn-social mx-3" href="#!" aria-label="Twitter" style="font-size:14px"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-3" href="#!" aria-label="Facebook" style="font-size:14px"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-3" href="#!" aria-label="LinkedIn" style="font-size:14px"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <div class="col-lg-3 text-lg-end">
+                <div class="col-md-3 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#!">Política de privacidade</a>
                     <a class="link-dark text-decoration-none" href="#!">Termos de usos</a>
                 </div>
