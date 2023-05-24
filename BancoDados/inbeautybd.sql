@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Maio-2023 às 14:40
+-- Tempo de geração: 24-Maio-2023 às 21:13
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -106,7 +106,7 @@ CREATE TABLE `servico` (
 --
 
 INSERT INTO `servico` (`idServico`, `descritivo`, `preco`, `tempoEstimado`, `Profissional`) VALUES
-(1, 'manicure', 20, 60, ''),
+(1, 'manicure', 20, 60, 'Helen'),
 (2, 'Manicure', 20, 60, 'Evelin Moreira'),
 (3, 'Escova', 50, 60, 'Débora Martins'),
 (4, 'pedicure', 25, 60, 'Evelin Moreira'),
@@ -153,14 +153,15 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `Nome`, `Cpf`, `DataNascimento`, `Celular`, `Email`, `Senha`, `Situacao`, `Apelido`, `Sexo`) VALUES
 (1, 'Graziela Morales', '26458064810', '1976-07-14', '(14)99806-9335', 'grazimorales@hotmail.com', '202cb962ac59075b964b07152d234b70', 'Ativo', 'Gra', 'feminino'),
-(2, 'Ana Lívia Franco', '222.222.222-22', '2003-04-19', '(14)9999-9999', 'anali@hotmail.com', '123', 'Ativo', 'Ana', 'feminino'),
-(3, 'Luiz Felipe Mendes', '555.555.555-55', '1986-05-21', '(14)9878-5478', 'luizfm@gmail.com', '123', 'Ativo', 'Luis Felipe', 'masculino'),
-(4, 'Ana Clara Romão', '888.888.888-88', '2006-09-17', '(14)9874-6532', 'kaka@gmail.com', '123', 'Ativo', 'Kaka', 'feminino'),
-(5, 'Silvio Silva', '444.444.444-44', '1975-09-21', '(14)9874-4125', 'silvio@gmail.com', '123', 'Ativo', 'Silvio', 'masculino'),
-(6, 'Júlia Marostiga', '777.777.777-77', '1980-01-19', '(99)9999-9999', 'juliam@gmail.com', '123', 'Ativo', 'Júlia', 'feminino'),
-(7, 'João Paulo Lopes', '265.478.456-58', '1985-07-14', '(14)9999-9999', 'joaop@gmail.com', '123', 'Ativo', 'João', 'masculino'),
-(8, 'Danielle Franco', '236.548.785-45', '1986-01-10', '(14)9865-8754', 'danielle@hotmail.com', '123', 'Ativo', 'Dani', 'feminino'),
-(9, 'Pedro', '55555555', '1979-07-14', '5555555', 'pedro@hotmail.com', '123', 'Ativo', 'pedro', 'masculino');
+(3, 'Luiz Felipe Mendes', '555.555.555-55', '1986-05-21', '(14)9878-5478', 'luizfm@gmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'Luis Felipe', 'masculino'),
+(4, 'Ana Clara Romão', '888.888.888-88', '2006-09-17', '(14)9874-6532', 'kaka@gmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'Kaka', 'feminino'),
+(5, 'Silvio Silva', '444.444.444-44', '1975-09-21', '(14)9874-4125', 'silvio@gmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'Silvio', 'masculino'),
+(6, 'Júlia Marostiga', '777.777.777-77', '1980-01-19', '(99)9999-9999', 'juliam@gmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'Júlia', 'feminino'),
+(7, 'João Paulo Lopes', '265.478.456-58', '1985-07-14', '(14)9999-9999', 'joaop@gmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'João', 'masculino'),
+(8, 'Danielle Franco', '236.548.785-45', '1986-01-10', '(14)9865-8754', 'danielle@hotmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'Dani', 'feminino'),
+(9, 'Pedro', '55555555', '1979-07-14', '5555555', 'pedro@hotmail.com', '202cb962ac59075b964b07152d234b70\r\n', 'Ativo', 'pedro', 'masculino'),
+(10, 'Ana Lívia Franco', '555.555.555-55', '2003-04-19', '(14)9999-9999', 'anali@hotmail.com', '202cb962ac59075b964b07152d234b70', 'Ativo', 'Ana Lívia', 'feminino'),
+(11, 'Tamires Fernandes', '584.698.784-89', '1987-04-21', '(14)9999-9999', 'tamires@gmail.com', '202cb962ac59075b964b07152d234b70', 'Ativo', 'Tamires', 'feminino');
 
 --
 -- Índices para tabelas despejadas
@@ -258,7 +259,7 @@ ALTER TABLE `servicoprestador`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para despejos de tabelas
