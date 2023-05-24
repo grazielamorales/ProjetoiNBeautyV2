@@ -14,12 +14,12 @@
     <script src="https://kit.fontawesome.com/eefac6c057.js" crossorigin="anonymous"></script>
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"-->   
-    <title>INBEAUTY - HeaderUsuario</title>
+    <title>INBEAUTY - FormCadastroUsuario</title>
     <link rel="stylesheet" href="assets/css/style2.css">
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
-        #bkg-img{   
+        #bkg-img{             
             font-family: "Helvetica Neue",Helvetica,Arial;         
             color: #fff;
             background-image: url("assets/images/bkg.jpeg");
@@ -128,8 +128,8 @@
                             </div>
                             <div class="col-6 erro"><?php echo $msg[6] != ""?$msg[6]:""?></div>
 							<div class="col-6 erro"><?php echo $msg[7] != ""?$msg[7]:""?></div>
-                            <div class="col-12 mt-5">
-                                <button type="submit" class="btn btn-success" name="action">Enviar</button>   
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary" name="action">Enviar</button>   
                                 <button type="reset" class="btn btn-danger">Cancelar</button>                 
                             </div>                 
                             

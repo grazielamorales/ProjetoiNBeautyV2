@@ -104,49 +104,41 @@
 			require_once "views/formCadastroUsuario.php";
 		}//fim do inserir
 
-        public function login(){
-
+        public function login()
+		{
 			$msg = "";
             if($_POST)
-            {                   
-                //verificar preenchimento
-               if($_POST["Email"] == "" || $_POST["Senha"] == "")
-               {
-                    $msg ="Dados Obrigatórios";
-               }                
+            {   
+				if (isset($_POST["Email"]) && isset($_POST["Senha"]) != "")
+				{     
                 
-                //se não tiver erro 
-            
-                if($msg ==  "")
-                {                    
-                    //verificar usuario e senha no BD
-                    $usuario = new Usuario(Email:$_POST["Email"], Senha:$_POST["Senha"]);
-                    
-                    $usuarioDAO = new UsuarioDAO($this->param);
-                    $retorno = $usuarioDAO->autenticar($usuario);
-                    if(is_array($retorno) && count($retorno) > 0)
-                    {
-                    //é um usuário
-                    // vamos guardar dados na sessão
-                                        
-                    $_SESSION["idUsuario"] = $retorno[0]->idUsuario;
-                    
-                    $_SESSION["Nome"] = $retorno[0]->Nome;
-                    
-                    $_SESSION["Email"] = $retorno[0]->Email;
-                  
-                    
-                    header("location:index.php");
-                    }
-                    else
-                    {
-                        $msg = "Verificar os dados digitados";
-                    }
+					//verificar usuario e senha no BD
+					$usuario = new Usuario(Email:$_POST["Email"], Senha:$_POST["Senha"]);
+					
+					$usuarioDAO = new UsuarioDAO($this->param);
+					$retorno = $usuarioDAO->autenticar($usuario);
+
+					if(is_array($retorno) && count($retorno) > 0)
+					{
+						//é um usuário
+						// vamos guardar dados na sessão
+											
+						$_SESSION["idUsuario"] = $retorno[0]->idUsuario;
+						
+						$_SESSION["Nome"] = $retorno[0]->Nome;
+						
+						$_SESSION["Email"] = $retorno[0]->Email;
+					
+						
+						header("location:homeUsuario.php");
+						
+					}      
+					
 				}
-                
-            }
+				
+			}
 			require_once "views/loginUsuario.php";
-        }
+		}
 
         public function logout()
         {

@@ -5,14 +5,12 @@ html, body {
   font-weight: 400;
   background-color: #fff;
   font-size: 16px;
-  -ms-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  
 }
 
 
 #logo{
-line-height: 60px;
+line-height: 40px;
 font-size:32px;
 font-weight: 800   ;
 color: #fff;
@@ -24,6 +22,23 @@ text-transform: uppercase;
 font-style: normal;
   color: #ed563b;
   font-weight: 900;
+}
+
+.logo-login{
+line-height: 60px;
+font-size:2em;
+font-weight: 800;
+color: #fff;
+text-transform: uppercase;
+   
+}
+
+.logo-login em{
+
+font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 

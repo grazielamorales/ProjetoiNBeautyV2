@@ -17,44 +17,66 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
+    <style>
+        body{        
+        background-image: url(assets/images/bkg6-1.jpg);
+        background-color: #000000b9;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+             
+        }
+       
+        .card{
+         background-color: #000000b9;
+         color: #fff;       
+        
+        }
+        a{
+            color:#fff;
+            text-decoration: none;
+        }     
+
+        
+    </style>
 <body>
- <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid ms-5">
-        <a class="navbar-brand" href="index.php" id="logo">IN<em> BEAUTY</em></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        </div>
-    </div>
- </nav>
-<div class="container ">
-    <div class="card col-5 offset-3 mt-3 mb-3">
-        <div class="card-header text-center">            
-            <h2 style="font: size 2em; font-weight: 800;">ENTRAR</h2>   
-            
+<br>
+<div class="container-md">
+    <div class=" card d-grid gap-2 col col-sm-4 mx-auto">
+        <div class="logo-login mt-5">           
+            <h2>IN<em>Beauty</em></h2>           
         </div>        
         
-        <div class="card-body">
+        <div class="card-body text-start">
             <form action="#" method="post">            
                  <!--Email e Senha-->
-                 <div class="col-8 offset-2 mt-3">
+                 <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-3">
                         <label class="label" for="Email">Email</label>
                         <input class="form-control" type="email" required>
                 </div>
-                <div class="col-8 offset-2 mt-3">                   
+                <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-3">                   
                     <label class="label" for="Senha">Senha</label>
                     <input class="form-control" type="password" required>
                 </div>
-                <div class="col-8 offset-2 mt-5 mb-5">
-                    <button type="submit" class="btn btn-success" name="action">Enviar</button>   
-                    <button type="reset" class="btn btn-danger">Cancelar</button>                                
-                </div>                  
+                <div class="d-grid gap-2 col col-sm-8 mx-auto  mt-5 mb-5 ">
+                    <button type="submit" class="btn btn-dark btn-lg" name="action" style="background-color:#ed563b">ENTRAR</button>   
+                                                 
+                </div> 
+                <div class="col col-sm-10 offset-1 mt-5 mb-5 text-center">
+                    
+                    <p><a href="index.php">Precisa de ajuda?</a></p>
+
+                     <strong>Novo por aqui? </strong>                    
+                    <a href="index.php?controle=usuarioController&metodo=inserir"> Inscreva-se agora.</a>
+                
+                </div> 
+                <div class="col col-sm-10 offset-1 mb-3 text-center" style="font-size: 12px;">
+                     &copy; Direitos reservados
+                </div>                
             </form>
         </div>
     </div>
 </div>
-<?php 
-require_once "footer.php";
-?>
+
 

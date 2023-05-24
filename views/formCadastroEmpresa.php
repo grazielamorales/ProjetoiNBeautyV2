@@ -1,11 +1,10 @@
 <?php 
     require_once "headerEmpresa.php";
-    
-?>
+    ?>
 <html>
 <body>
 <div class="container">
-    <div class="card mt-5">
+    <div class="card mt-3">
         <div class="card-header">
             <h2>Cadastre sua Empresa</h2>
         </div>
@@ -78,8 +77,8 @@
                     <input class="form-control" type="password" required>
                 </div>
                 <span><?php echo $msg;?></span>
-                <div class="col-12 mt-5">
-                    <button type="submit" class="btn btn-success" name="action">Enviar</button>   
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-primary" name="action">Enviar</button>   
                     <button type="reset" class="btn btn-danger">Cancelar</button>                                
                 </div>                 
                 
