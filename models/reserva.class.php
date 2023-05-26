@@ -1,13 +1,12 @@
 <?php 
     Class Reserva{
         public function __construct(
-            private int $idReserva = 0,
-            private $DtReserva = date('Y-m-d'),
-            private $HoraReserva = time(),
+            private $idReserva,
+            private $DtReserva,
+            private $HoraReserva,
             private $ItensReserva = array()
         )
         {}
-
         
 
             /**

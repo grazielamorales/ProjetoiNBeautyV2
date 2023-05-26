@@ -1,15 +1,15 @@
 <?php 
     //incluir classes
     require_once "models/Conexao.class.php";
-    require_once "models/usuario.class.php";
-    require_once "models/usuarioDAO.class.php";
-	require_once "models/Servico.Class.php";
-	require_once "models/servicoDAO.class.php";
+    require_once "models/prestador.Class.php";
+    require_once "models/PrestadorDAO.class.php";
+	require_once "models/Empresa.Class.php";
+	require_once "models/EmpresaDAO.class.php";
 
     if(!isset($_SESSION))
 		session_start();
 
-    class UsuarioController{
+    class PrestadorController{
 
         private $param;
 		public function __construct()
@@ -22,7 +22,8 @@
 			$msg = array("","","","","","","","","");
 			$erro = false;
 			if($_POST)
-			{
+			{      
+
 				//verificação preenchimento
 				if(empty($_POST["Nome"]))
 				{
@@ -30,9 +31,9 @@
 					$erro = true;
 				}
 				
-				if(empty($_POST["Cpf"]))
+				if(empty($_POST["DtNasc"]))
 				{
-					$msg[1] = "Preencha o seu CPF";
+					$msg[1] = "Preencha o seu Data do Nascimento";
 					$erro = true;
 				}
 				if(empty($_POST["Celular"]))
@@ -40,31 +41,21 @@
 					$msg[2] = "Preencha o seu celular";
 					$erro = true;
 				}
-				if($_POST["Sexo"] == "")
-				{
-					$msg[3] = "Selecione o sexo";
-					$erro = true;
-				}
 				
-				if(empty($_POST["DataNascimento"]))
-				{
-					$msg[4] = "Preencha a Data";
-					$erro = true;
-				}
 				
 				if(empty($_POST["Email"]))
 				{
-					$msg[5] = "Preencha o seu e-mail";
+					$msg[3] = "Preencha o seu e-mail";
 					$erro = true;
 				}
 				if(empty($_POST["Senha"]))
 				{
-					$msg[6] = "Preencha a senha";
+					$msg[4] = "Preencha a senha";
 					$erro = true;
 				}
 				if(empty($_POST["Confsenha"]))
 				{
-					$msg[7] = "Preencha a confirmação da senha";
+					$msg[5] = "Preencha a confirmação da senha";
 					$erro = true;
 				}
 				
@@ -72,18 +63,18 @@
 				{
 					if($_POST["Senha"] != $_POST["Confsenha"])
 					{
-						$msg[6] = "Senhas não conferem";
+						$msg[4] = "Senhas não conferem";
 						$erro = true;
 					}
 				}
 				if(!empty($_POST["Email"]))
 				{
-					$usuario = new usuario(Email:$_POST["Email"]);
-					$usuarioDAO = new usuarioDAO($this->param);
-					$retorno = $usuarioDAO->verificar_por_email($usuario);
+					$prestador = new prestador(Email:$_POST["Email"]);
+					$prestadorDAO = new prestadorDAO($this->param);
+					$retorno = $prestadorDAO->verificar_por_email($prestador);
 					if(count($retorno) > 0)
 					{
-						$msg[5] = "E-mail já cadastrado";
+						$msg[3] = "E-mail já cadastrado";
 						$erro = true;
 					}
 				}
@@ -91,25 +82,27 @@
 				
 				if(!$erro)
 				{
+                
+     
+					//inserir BD
+					$prestador = new prestador(0,$_POST["Nome"],$_POST["DtNasc"]
+					,$_POST["Celular"],
+					 $_POST["Email"],md5($_POST["Senha"]),
+					  $Status="Ativo");
 					
-					//inserir BD	
-
-					$usuario = new usuario(0,$_POST["Nome"],$_POST["Cpf"],
-					$_POST["DataNascimento"], $_POST["Celular"], $_POST["Email"]
-					,md5($_POST["Senha"]), $Situacao="Ativo", $_POST["Apelido"],
-					 $_POST['Sexo']);
+					$prestadorDAO = new prestadorDAO($this->param);
 					
-					$usuarioDAO = new usuarioDAO($this->param);
-					
-					$usuarioDAO->inserir($usuario);
+					$prestadorDAO->inserir($prestador);
 					
 					//mostrar login
-					header("location:index.php?controle=usuarioController&metodo=login");
+					header("location:index.php?controle=prestadorController&metodo=login");
 				}
 			}
-			require_once "views/formCadastroUsuario.php";
+			require_once "views/formCadastroPrestador.php";
 		}//fim do inserir
 
+
+		
         public function login()
 		{
 			$msg = "";
@@ -123,11 +116,12 @@
 				
 				//se não tiver erro
 				if($msg == ""){
-					//verificar usuario e senha no BD
-					$usuario = new Usuario(Email:$_POST["Email"], Senha:md5($_POST["Senha"]));
+					//verificar prestador e senha no BD
+					$prestador = new prestador(Email:$_POST["Email"], 
+					Senha:md5($_POST["Senha"]));
 					
-					$usuarioDAO = new UsuarioDAO($this->param);
-					$retorno = $usuarioDAO->autenticar($usuario);
+					$prestadorDAO = new prestadorDAO($this->param);
+					$retorno = $prestadorDAO->autenticar($prestador);
 
 					if(is_array($retorno) && count($retorno) > 0)
 					{
@@ -135,14 +129,14 @@
 						// vamos guardar dados na sessão
 
 						session_start();					
-						$_SESSION["idUsuario"] = $retorno[0]->idUsuario;
+						$_SESSION["idprestador"] = $retorno[0]->idprestador;
 						
 						$_SESSION["Nome"] = $retorno[0]->Nome;
 						
 						$_SESSION["Email"] = $retorno[0]->Email;
 					
 						
-						header("location:index.php?controle=usuarioController&metodo=home&id=".$retorno[0]->idUsuario);
+						header("location:index.php?controle=prestadorController&metodo=home&id=".$retorno[0]->idprestador);
 						
 					}
 					else
@@ -152,7 +146,7 @@
 				 
 				}  			
 			}
-			require_once "views/loginUsuario.php";
+			require_once "views/loginPrestador.php";
 		}
 
         public function logout()
@@ -163,9 +157,9 @@
         }  
 
 		public function home(){
-			if(isset($_SESSION["idUsuario"])){
-				$usuario = $_SESSION["Nome"];
-				$idUsuario = $_SESSION["idUsuario"];
+			if(isset($_SESSION["idprestador"])){
+				$prestador = $_SESSION["Nome"];
+				$idprestador = $_SESSION["idprestador"];
 
 				$servicoDAO = new ServicoDAO($this->param);
 				$retorno = $servicoDAO->buscarTodoServicos();
@@ -173,7 +167,7 @@
 				
 			}
 			
-			require_once "views/homeUsuario.php";
+			//require_once "views/homePrestador.php";
 		}
 
 			
@@ -183,3 +177,4 @@
         
     
 ?>
+	

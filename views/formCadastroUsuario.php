@@ -58,7 +58,7 @@
                         <li>Escolha o salão, serviços, profissionais e agende online</li>
                         <li>Encontre os salões mais perto de você</li>                       
                         <li>Acesse a agenda do salão 24h para marcar seu horário</li>
-                        <li>Receba lembredetes dos seus agendamentos</li>                       
+                        <li>Receba lembretes dos seus agendamentos</li>                       
                     </ul>   
                     <p>Preencha o formulário ao lado e cadastre-se gratuitamente!</p>
                 </div>  
@@ -74,6 +74,7 @@
                     <div class="card-body"-->
                         <form action="#" method="post">
                         <div class="row">
+                            
                             <!--Nome e Nome de usuário-->               
                             <div class="col-6">
                                     <label class="label" for="nome">Nome Completo</label>
@@ -85,6 +86,9 @@
                             </div>
 							<div class="col-6 erro"><?php echo $msg[0] != ""?$msg[0]:""?></div>
 							<div class="col-6"></div>
+
+
+                            
                             <!--CPF e Celular-->                
                             <div class="col-6 mt-3">
                                 <label class="label" for="Cpf">CPF</label>
@@ -97,6 +101,8 @@
                             </div>
 							<div class="col-6 erro"><?php echo $msg[1] != ""?$msg[1]:""?></div>
 							<div class="col-6 erro"><?php echo $msg[2] != ""?$msg[2]:""?></div>
+
+
                             <!--Sexo e Data de Nascimento-->   
                             <div class="col-6 mt-3">
 							<label class="label" for="Sexo">Sexo</label>
@@ -111,7 +117,9 @@
                                 <input class="form-control" type="date" name="DataNascimento" value="<?php echo isset($_POST['DataNascimento'])?$_POST['DataNascimento']:''; ?>">
                             </div>  
 							<div class="col-6 erro"><?php echo $msg[3] != ""?$msg[3]:""?></div>
-							<div class="col-6 erro"><?php echo $msg[4] != ""?$msg[4]:""?></div>							
+							<div class="col-6 erro"><?php echo $msg[4] != ""?$msg[4]:""?></div>		
+                            
+                            
                             <!--Email e Senha-->
                             <div class="col-06 mt-3">
                                     <label class="label" for="Email">E-mail</label>
@@ -130,11 +138,12 @@
 							<div class="col-6 erro"><?php echo $msg[7] != ""?$msg[7]:""?></div>
                             <div class="col-12 mt-3">
                                 <button type="submit" class="btn btn-primary" name="action">Enviar</button>   
-                                <button type="reset" class="btn btn-danger">Cancelar</button>                 
-                            </div>                 
-                            
-                        </div>               
-                            
+                                <button type="reset" class="btn btn-danger">Cancelar</button> 
+
+                                <a class="mt-5 mb-5 ms-5" href="index.php? controle=usuarioController&metodo=login">Já tem conta? Clique aqui para entrar!</a></a>                    
+                            </div>                          
+                        </div>    
+                        
                         </form>
                     </div>
                 </div>

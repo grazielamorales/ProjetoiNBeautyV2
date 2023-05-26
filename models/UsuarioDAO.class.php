@@ -1,5 +1,5 @@
 <?php
-	class UsuarioDAO extends Conexao
+	class UsuarioDAO
 	{
 		public function __construct( private $conexao){}
 		
@@ -13,9 +13,12 @@
 			$this->conexao = null;
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		}
+
+		
 		public function inserir($usuario)
 		{
-			$sql = "INSERT INTO usuario (Nome, Cpf, DataNascimento, Celular, Email, Senha, Situacao, Apelido, Sexo) VALUES(?,?,?,?,?,?,?,?,?)";
+			$sql = "INSERT INTO usuario (Nome, Cpf, DataNascimento, Celular, Email,
+			 Senha, Situacao, Apelido, Sexo) VALUES(?,?,?,?,?,?,?,?,?)";
 			$stm = $this->conexao->prepare($sql);
 			$stm->bindValue(1, $usuario->getNome());
 			$stm->bindValue(2, $usuario->getCpf());

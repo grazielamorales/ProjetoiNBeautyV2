@@ -6,7 +6,7 @@
             private string $descritivo = "",
             private float $preco= 0,
             private string $tempoEstim = "",
-            private array $cliente = array()
+            private array $prestador = array()
             
         ){}       
 
@@ -86,17 +86,17 @@
             /**
              * Get the value of cliente
              */
-            public function getCliente(): array
+            public function getPreatador(): array
             {
-                        return $this->cliente;
+                        return $this->prestador;
             }
 
             /**
              * Set the value of cliente
              */
-            public function setCliente(array $cliente): self
+            public function setPrestador(array $prestador): self
             {
-                        $this->cliente = $cliente;
+                        $this->prestador = $prestador;
 
                         return $this;
             }

@@ -9,7 +9,7 @@
 		{
 			if(empty(self::$db))
 			{
-				//criar a conexÃ£o
+				//criar a conexão
 				$parametros = "mysql:host=localhost;dbname=inbeautybd;charset=utf8mb4";
 				try
 				{
@@ -19,7 +19,7 @@
 				{
 					echo $e->getCode();
 					echo $e->getMessage();
-					//echo "Problema na conexÃ£o";
+					//echo "Problema na conexão";
 					die();
 				}
 			}//fim do if
