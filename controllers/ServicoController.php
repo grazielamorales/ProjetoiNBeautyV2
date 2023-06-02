@@ -10,10 +10,9 @@ class ServicoController{
     }
 
 
-
     public function listar()
     {
-        $servicooDAO = new servicoDAO();
+        $servicoDAO = new servicoDAO($this->param);
         $retorno = $servicoDAO->buscarTodoServicos();
 
         require_once "views/listar_servico.php";
@@ -35,17 +34,7 @@ class ServicoController{
                 $erro = true;
                 echo "<script>alert('Preencha o nome do serviço')</script>";
             }
-           /* if($_FILES["imagem"]["name"] == "")
-            {
-                $erro = true;
-                echo "<script>alert('Escolha uma imagem para o produto')</script>";
-            }
-            if($_POST["categoria"] == "0")
-            {
-                $erro = true;
-                echo "<script>alert('Escolha uma categoria')</script>";
-            }
-            if(!$erro)*/
+          
             if($_POST["preco"] == "")
             {
                 $erro = true;
@@ -67,19 +56,10 @@ class ServicoController{
 
 
 
-           /* {
-                //inserir no BD
-                $categoria = new categoria($_POST["categoria"]);
-                
-                $produto = new Produto(nome:$_POST["nome"], descricao:$_POST["descricao"], preco:$_POST["preco"], estoque:$_POST["estoque"], imagem:$_FILES["imagem"]["name"], status:"Ativo", categoria:$categoria);
-                
-                $produtoDAO = new ProdutoDAO();
-                $produtoDAO->inserir_produto($produto);
-                
-                header("location:index.php?controle=produtoController&metodo=listar");
-           }*/
+           
         }
            
 
     }
+}
 ?>

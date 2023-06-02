@@ -1,17 +1,17 @@
 <?php 
-    require_once "headerUsuario.php";
-
+    
     if(!isset($_SESSION))
 		session_start();
+    
+    require_once "headerPrestador.php";
 
 ?>
 
 <div class="container-md mt-5">
 
     <div class="row justify-content-md-center">
-        <div class="col md-auto mt-5">
-            <h3>Bem Vindo <em style="color:#ed563b; font-weight:bold"><?php echo $usuario?></em> </h3>
-            <p>Selecione o serviço que deseja agendar:</p>
+        <div class="col md-auto">           
+            <h3>Serviços Cadastrados</h3>
         </div>
     </div>
     <div class="card justify-content-md-center">

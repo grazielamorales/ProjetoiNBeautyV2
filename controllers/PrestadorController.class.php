@@ -3,8 +3,8 @@
     require_once "models/Conexao.class.php";
     require_once "models/prestador.Class.php";
     require_once "models/PrestadorDAO.class.php";
-	require_once "models/Empresa.Class.php";
-	require_once "models/EmpresaDAO.class.php";
+	require_once "models/Servico.Class.php";
+	require_once "models/ServicoDAO.class.php";
 
     if(!isset($_SESSION))
 		session_start();
@@ -81,13 +81,12 @@
 				//se tudo certo
 				
 				if(!$erro)
-				{
-                
+				{                
      
 					//inserir BD
 					$prestador = new prestador(0,$_POST["Nome"],$_POST["DtNasc"]
 					,$_POST["Celular"],
-					 $_POST["Email"],md5($_POST["Senha"]),
+					$_POST["Email"],md5($_POST["Senha"]),
 					  $Status="Ativo");
 					
 					$prestadorDAO = new prestadorDAO($this->param);
@@ -121,7 +120,7 @@
 					Senha:md5($_POST["Senha"]));
 					
 					$prestadorDAO = new prestadorDAO($this->param);
-					$retorno = $prestadorDAO->autenticar($prestador);
+					$retorno = $prestadorDAO->autenticar($prestador);					
 
 					if(is_array($retorno) && count($retorno) > 0)
 					{
@@ -129,14 +128,13 @@
 						// vamos guardar dados na sessão
 
 						session_start();					
-						$_SESSION["idprestador"] = $retorno[0]->idprestador;
+						$_SESSION["idPrestador"] = $retorno[0]->idPrestador;
 						
 						$_SESSION["Nome"] = $retorno[0]->Nome;
 						
-						$_SESSION["Email"] = $retorno[0]->Email;
-					
+						$_SESSION["Email"] = $retorno[0]->Email;					
 						
-						header("location:index.php?controle=prestadorController&metodo=home&id=".$retorno[0]->idprestador);
+						header("location:index.php?controle=prestadorController&metodo=home");
 						
 					}
 					else
@@ -156,18 +154,25 @@
             header("location:index.php");
         }  
 
-		public function home(){
-			if(isset($_SESSION["idprestador"])){
-				$prestador = $_SESSION["Nome"];
-				$idprestador = $_SESSION["idprestador"];
+		public function home(){			
 
-				$servicoDAO = new ServicoDAO($this->param);
-				$retorno = $servicoDAO->buscarTodoServicos();
+			if(isset($_SESSION["idPrestador"])){
+				$prestador = $_SESSION["Nome"];
+				$idprestador = $_SESSION["idPrestador"];			
 
 				
 			}
 			
-			//require_once "views/homePrestador.php";
+			require_once "views/homePrestador.php";
+		}
+
+		public function listarServico(){
+		
+
+
+
+		
+			require_once "views/homeServicoPrestador.php";
 		}
 
 			

@@ -76,7 +76,7 @@
 						$erro = true;
 					}
 				}
-				if(!empty($_POST["Email"]))
+				if(!empty($_POST["Email"])) //se não estiver vazio email
 				{
 					$usuario = new usuario(Email:$_POST["Email"]);
 					$usuarioDAO = new usuarioDAO($this->param);
@@ -142,7 +142,7 @@
 						$_SESSION["Email"] = $retorno[0]->Email;
 					
 						
-						header("location:index.php?controle=usuarioController&metodo=home&id=".$retorno[0]->idUsuario);
+						header("location:index.php?controle=usuarioController&metodo=home");
 						
 					}
 					else

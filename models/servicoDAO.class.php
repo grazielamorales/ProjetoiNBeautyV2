@@ -6,8 +6,10 @@
         public function buscarTodoServicos(){
 
             $sql = "SELECT *
-                    FROM servico INNER JOIN prestador
-                    ON servico.idPrestador = prestador.idPrestador;";
+                    FROM servico INNER JOIN servicoprestadorservico
+                    ON servicoprestadorservico.idServico = servico.idServico
+					INNER JOIN prestador ON prestador.idPrestador=servicoprestadorservico.idPrestador";
+
             $stm = $this->conexao->prepare($sql);
 			//executa a frase sql no BD
 			$stm->execute();
@@ -18,22 +20,65 @@
         
         }
 
-
         
         public function inserir_servico($servico)
 		{
-			$sql = "INSERT INTO servico(descritivo, preco, tempoEstimado, Profissional)VALUES(?,?, ?, ?)";
-			
-			$stm = $this->db->prepare($sql);
-			//substituir os pontos de interrogação
-			$stm->bindValue(1, $produto->getDescritivo());
-			$stm->bindValue(2, $produto->getPreco());
-			$stm->bindValue(3, $produto->getTempoEstim());
-			
-			$stm->execute();
-			
-			$this->db = null;
+			$sql = "INSERT INTO servico (descritivo, preco, tempoEstimado) VALUES (?,?,?)";
+
+			try
+			{
+				$stm = $this->conexao->prepare($sql);				
+				$stm->bindValue(1, $servico->getDescritivo());
+				$stm->bindValue(2, $servico->getPreco());
+				$stm->bindValue(3, $servico->getTempoEstimado());
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
 			
 		}
+
+        public function getServico($idServico){
+
+            $sql = "SELECT * FROM servico WHERE idServico = ?";
+			try
+			{
+				$stm = $this->conexao->prepare($sql);
+				$stm->bindValue(1, $idServico);				
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
+        }
+
+		public function getServicoPrestador($idServico)
+		{
+			$sql = "SELECT * FROM servicoprestadorservico WHERE idPrestador = ?";
+			try
+			{
+				$stm = $this->conexao->prepare($sql);
+				$stm->bindValue(1, $idServico);				
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
+		}
+
+		
     }
 ?>

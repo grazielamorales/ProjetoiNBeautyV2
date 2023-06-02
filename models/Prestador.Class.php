@@ -8,7 +8,7 @@
             private string $Celular = "",
             private string $Email = "",
             private string $Senha = "",
-            private string $Status = "", 
+            private string $Status = "",             
             private array $Servico = array(),
             private $Empresa = null,
             
