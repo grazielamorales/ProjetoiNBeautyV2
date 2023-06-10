@@ -142,8 +142,6 @@
 			$this->conexao = null;
 			return $e->getMessage();
 		}
-		
-			
 
 		
 		

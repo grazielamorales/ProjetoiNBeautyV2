@@ -5,6 +5,9 @@
     require_once "models/PrestadorDAO.Class.php";
 	require_once "models/Servico.Class.php";
 	require_once "models/ServicoDAO.Class.php";
+    require_once "models/PrestadorDAO.class.php";
+	require_once "models/Servico.Class.php";
+	require_once "models/ServicoDAO.class.php";
 
     if(!isset($_SESSION))
 		session_start();
@@ -81,7 +84,8 @@
 				//se tudo certo
 				
 				if(!$erro)
-				{              
+				{
+                
      
 					//inserir BD
 					$prestador = new prestador(0,$_POST["Nome"],$_POST["DtNasc"]
@@ -98,8 +102,56 @@
 				}
 			}
 			require_once "views/formCadastroPrestador.php";
-		}//fim do inserir	
-       
+		}//fim do inserir
+
+
+		
+        public function login()
+		{
+			$msg = "";
+            if($_POST)
+            {   
+				//verificar preenchimento
+				if($_POST["Email"] == "" || $_POST["Senha"] == "")
+				{
+					$msg ="Dados Obrigatórios";
+				}
+				
+				//se não tiver erro
+				if($msg == ""){
+					//verificar prestador e senha no BD
+					$prestador = new prestador(Email:$_POST["Email"], 
+					Senha:md5($_POST["Senha"]));
+					
+					$prestadorDAO = new prestadorDAO($this->param);
+					$retorno = $prestadorDAO->autenticar($prestador);
+
+					if(is_array($retorno) && count($retorno) > 0)
+					{
+						//é um usuário
+						// vamos guardar dados na sessão
+
+						session_start();					
+						$_SESSION["idprestador"] = $retorno[0]->idprestador;
+						
+						$_SESSION["Nome"] = $retorno[0]->Nome;
+						
+						$_SESSION["Email"] = $retorno[0]->Email;
+					
+						
+						header("location:index.php?controle=prestadorController&metodo=home&id=".$retorno[0]->idprestador);
+						
+					}
+					else
+					{
+						$msg = "Senha ou usuário inválido!";
+					}  
+				 
+				}  			
+			}
+			require_once "views/loginPrestador.php";
+		}
+
         public function logout()
         {
             $_SESSION = array();
@@ -111,71 +163,16 @@
 
 			if(isset($_SESSION["idPrestador"])){
 				$prestador = $_SESSION["Nome"];
-				$idprestador = $_SESSION["idPrestador"];
+				$idprestador = $_SESSION["idprestador"];
 
-				//printf($idprestador);
-						
+				$servicoDAO = new ServicoDAO($this->param);
+				$retorno = $servicoDAO->buscarTodoServicos();
+
 				
 			}
-
-			require_once "views/homePrestador.php";
 			
-			
+			//require_once "views/homePrestador.php";
 		}
-
-		public function editarCadastro()
-		{
-
-		}
-
-		public function listarServicos()
-		{
-			$resp="";
-			if(isset($_SESSION["idPrestador"]))
-        	{  
-				$idPrestador = $_SESSION["idPrestador"];
-				$prestador = $_SESSION["Nome"];	
-				$Tipo = "prestador";				
-				
-				$servicoDAO = new servicoDAO($this->param);
-				$retorno = $servicoDAO->buscarTodoServicosPrestador($idPrestador);
-				//echo"<pre>";
-				//print_r($retorno);
-				//die();
-
-        	}
-
-			require_once "views/homeServicoPrestador.php";
-		}
-
-		 public function Deletar()
-    	{   
-			if(isset($_SESSION["idPrestador"]))
-        	{  
-				$idPrestador = $_SESSION["idPrestador"];
-				$prestador = $_SESSION["Nome"];	
-				$Tipo = "prestador";
-				
-				
-				if($_GET["idServico"])
-				{
-					$idServico = $_GET['idServico'];					
-					//buscar todos os serviços do 					
-					$servicoDAO = new servicoDAO($this->param);
-					$retorno = $servicoDAO->buscarTodoServicosPrestador($idPrestador);	
-										
-					//apagar o serviço no banco					
-					$servico = new ServicoDAO($this->param);
-					$resp = $servico->deletar_servico($idPrestador); 
-
-					     
-
-				}
-			}
-		
-			require_once "views/homeServicoPrestador.php";
-    
-    	}
 
 			
 

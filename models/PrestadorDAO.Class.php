@@ -26,7 +26,7 @@
         //autenticar prestador
         public function autenticar($prestador)
 		{
-			$sql = "SELECT idPrestador, Nome FROM prestador WHERE email = ? AND senha = ?";
+			$sql = "SELECT idPrestador, Email FROM prestador WHERE email = ? AND senha = ?";
             $stm = $this->conexao->prepare($sql);
 			$stm->bindValue(1, $prestador->getEmail());
 			$stm->bindValue(2, $prestador->getSenha());
@@ -51,60 +51,8 @@
 				$this->conexao = null;
 				return "Problema ao verificar usuário pelo e-mail";
 			}
-		}
 
-        public function getPrestadores(){
 
-            $sql = "SELECT idPrestador, Nome FROM prestador";
-			try
-			{
-				$stm = $this->conexao->prepare($sql);
-				$stm->execute();
-				$this->conexao = null;
-				return $stm->fetchAll(PDO::FETCH_OBJ);
-			}
-			catch(PDOException $e)
-			{
-				$this->conexao = null;
-				return "Problema ao buscar fornecedores";
-			}
-        }
-
-		public function getPrest($idPrestador)
-		{
-			$sql = "SELECT idPrestador, Nome FROM prestador
-					WHERE idPrestador = ?";
-			try
-			{
-				$stm = $this->conexao->prepare($sql);
-				$stm->bindValue(1, $idPrestador);
-				$stm->execute();
-				$this->conexao = null;
-				return $stm->fetchAll(PDO::FETCH_OBJ);
-			}
-			catch(PDOException $e)
-			{
-				$this->conexao = null;
-				return "Problema ao buscar fornecedores";
-			}
-		}
-
-		public function getTempoEstimado($idPrestador)
-		{
-			$sql = "SELECT tempoEstimado FROM prestador WHERE idPrestador = ?";
-			try
-			{
-				$stm = $this->conexao->prepare($sql);
-				$stm->bindValue(1, $idPrestador);				
-				$stm->execute();
-				$this->conexao = null;
-				return $stm->fetchAll(PDO::FETCH_OBJ);
-			}
-			catch(PDOException $e)
-			{
-				$this->conexao = null;
-				return "Problema ao verificar usuário pelo e-mail";
-			}
 		}
     }
 ?>

@@ -75,6 +75,31 @@
                 ?>     
                 
             </tbody>
+            <tr>
+                <th>Procedimento</th>
+                <th>Preço</th>
+                <th>Tempo estimado</th>
+                <th>Profissional</th>
+                <th class="text-center">Agendar</th>
+            </tr>
+            <?php if(is_array($retorno)){
+               
+                    foreach ($retorno as $dado) {
+                    echo "<tr>";
+                    echo "<td>{$dado->descritivo}</td>";
+                    echo "<td>" . number_format($dado->preco,2,",",".")."</td>";
+                    echo "<td>{$dado->tempoEstimado}</td>";
+                    echo "<td>{$dado->Nome}</td>";
+                    echo "<td class='text-center'>          
+    						<a href='index.php?controle=reservaController&metodo=agendar&idUsuario=$idUsuario&idPrestador=$dado->idPrestador&idServico=$dado->idServico'><i class='fa-solid fa-calendar-plus fa-2xl' style='color: #ed563b; '></i></a>			
+							
+                    </td>";                   
+                    echo "</tr>";
+                }
+            }
+            
+            ?>    
+
         </table>
        
     </div>

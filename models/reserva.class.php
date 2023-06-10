@@ -1,7 +1,7 @@
 <?php 
     Class Reserva{
         public function __construct(
-            private $idReserva,
+            private int $idReserva,
             private $DtReserva,
             private $HoraReserva,
             private $Procedimento,
@@ -9,6 +9,12 @@
             private $idUsuario,
             private $idPrestador,
             private string $status = ""
+          
+            private string $Procedimento,
+            private float $ValorProcedimento,
+            private int $idUsuario,
+            private int $idPrestador
+
           
         )
         {}   
