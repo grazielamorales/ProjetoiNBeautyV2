@@ -176,6 +176,7 @@ body {
 
 .dark-bg p {
   color: #fff;
+  
 }
 
 .main-button a {
@@ -858,7 +859,7 @@ schedule
 #schedule {
   padding: 0px 0px 140px 0px;
   background-image: url(../images/bkg5.jpg);
-  background-color: #000000b9;
+  background-color: #000000d3;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

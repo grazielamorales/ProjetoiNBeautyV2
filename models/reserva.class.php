@@ -4,9 +4,15 @@
             private $idReserva,
             private $DtReserva,
             private $HoraReserva,
-            private $ItensReserva = array()
+            private $Procedimento,
+            private $ValorProcedimento,
+            private $idUsuario,
+            private $idPrestador,
+            private string $status = ""
+          
         )
-        {}
+        {}   
+
         
 
             /**
@@ -28,7 +34,7 @@
             }
 
             /**
-             * Get the value of DataReserva
+             * Get the value of DtReserva
              */
             public function getDtReserva()
             {
@@ -36,7 +42,7 @@
             }
 
             /**
-             * Set the value of DataReserva
+             * Set the value of DtReserva
              */
             public function setDtReserva($DtReserva): self
             {
@@ -64,21 +70,87 @@
             }
 
             /**
-             * Get the value of ItensReserva
+             * Get the value of Procedimento
              */
-            public function getItensReserva()
+            public function getProcedimento()
             {
-                        return $this->ItensReserva;
+                        return $this->Procedimento;
             }
 
             /**
-             * Set the value of ItensReserva
+             * Set the value of Procedimento
              */
-            public function setItensReserva($ItensReserva): self
+            public function setProcedimento($Procedimento): self
             {
-                        $this->ItensReserva = $ItensReserva;
+                        $this->Procedimento = $Procedimento;
 
                         return $this;
             }
-    }
+
+            /**
+             * Get the value of ValorProcedimento
+             */
+            public function getValorProcedimento()
+            {
+                        return $this->ValorProcedimento;
+            }
+
+            /**
+             * Set the value of ValorProcedimento
+             */
+            public function setValorProcedimento($ValorProcedimento): self
+            {
+                        $this->ValorProcedimento = $ValorProcedimento;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of idUsuario
+             */
+            public function getIdUsuario()
+            {
+                        return $this->idUsuario;
+            }
+
+            /**
+             * Set the value of idUsuario
+             */
+            public function setIdUsuario($idUsuario): self
+            {
+                        $this->idUsuario = $idUsuario;
+
+                        return $this;
+            }
+
+            /**
+             * Get the value of idPrestador
+             */
+            public function getIdPrestador()
+            {
+                        return $this->idPrestador;
+            }
+
+            /**
+             * Set the value of idPrestador
+             */
+            public function setIdPrestador($idPrestador): self
+            {
+                        $this->idPrestador = $idPrestador;
+
+                        return $this;
+            }
+
+            public function getStatus(): string
+            {
+                return $this->status;
+            }
+
+            public function setStatus($status): self
+            {
+                $this->status = $status;
+                return $this;
+            }
+     }  
+          
 ?>

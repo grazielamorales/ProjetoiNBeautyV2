@@ -8,22 +8,22 @@
 		{
 			$sql = "SELECT idEmpresa, NomeEmpresa FROM empresa WHERE Email = ? AND Senha = ?";
 			$stm = $this->conexao->prepare($sql);
-			$stm->bindValue(1, $usuario->getEmail());
-			$stm->bindValue(2, $usuario->getSenha());
+			$stm->bindValue(1, $empresa->getEmail());
+			$stm->bindValue(2, $empresa->getSenha());
 			$stm->execute();
 			$this->conexao = null;
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		}
 
 
-        public function inserir($usuario)
+        public function inserir($empresa)
 		{
 	
 	
             $sql = "INSERT INTO empresa (NomeFantasia,RazaoSocial,Cnpj, logradouro,
             numero, bairro, cep, cidade, uf, fone, email, Senha, Status)
              values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $stm = $this->db->prepare($sql);
+            $stm = $this->conexao->prepare($sql);
 			$stm->bindValue(1, $empresa->getNomeFantasia());
 		    $stm->bindValue(2, $empresa->getRazaoSocial());
             $stm->bindValue(3, $empresa->getCnpj());
@@ -40,7 +40,7 @@
          
 			$stm->execute();
 
-            $this->db=null;
+            $this->conexao=null;
             /* //obtem a ultima chave inserida!
             $idEmpresa = $this->db->lastInsertId();
 

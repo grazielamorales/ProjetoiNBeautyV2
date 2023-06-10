@@ -2,19 +2,17 @@
     class Prestador
     {
         public function __construct(
-            private int $idPrestador = 0,
+            private $idPrestador = 0,
             private string $Nome = "",
             private string $DtNasc = "",
             private string $Celular = "",
             private string $Email = "",
             private string $Senha = "",
-            private string $Status = "", 
+            private string $Status = "",             
             private array $Servico = array(),
             private $Empresa = null,
             
-        ){}
-
-        
+        ){}      
 
           
 

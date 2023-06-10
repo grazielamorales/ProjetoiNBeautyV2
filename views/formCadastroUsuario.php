@@ -61,8 +61,7 @@
                         <li>Receba lembretes dos seus agendamentos</li>                       
                     </ul>   
                     <p>Preencha o formulário ao lado e cadastre-se gratuitamente!</p>
-                </div>  
-
+                </div> 
             </div>
 
             <div class="col col-lg-6">

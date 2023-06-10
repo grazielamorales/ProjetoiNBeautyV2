@@ -2,7 +2,7 @@
     class Usuario
     {
         public function __construct(
-            private int $idUsuario= 0,
+            private int $idUsuario = 0,
             private string $Nome = "",
             private string $Cpf = "",
             private string $DataNascimento = "",
@@ -20,7 +20,7 @@
             /**
              * Get the value of idUsuario
              */
-            public function getIdUsuario(): int
+            public function getIdUsuario()
             {
                         return $this->idUsuario;
             }

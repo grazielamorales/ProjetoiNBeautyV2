@@ -4,9 +4,9 @@
         public function __construct(
             private int $idServico = 0,
             private string $descritivo = "",
-            private float $preco= 0,
-            private string $tempoEstim = "",
-            private array $prestador = array()
+            private $preco= 0,
+            private $tempoEstimado,
+            private $prestador = array()
             
         ){}       
 
@@ -50,7 +50,7 @@
             /**
              * Get the value of preco
              */
-            public function getPreco(): float
+            public function getPreco()
             {
                         return $this->preco;
             }
@@ -68,17 +68,17 @@
             /**
              * Get the value of tempoEstim
              */
-            public function getTempoEstim(): string
+            public function getTempoEstimado()
             {
-                        return $this->tempoEstim;
+                        return $this->tempoEstimado;
             }
 
             /**
              * Set the value of tempoEstim
              */
-            public function setTempoEstim(string $tempoEstim): self
+            public function setTempoEstimado(string $tempoEstimado): self
             {
-                        $this->tempoEstim = $tempoEstim;
+                        $this->tempoEstimado = $tempoEstimado;
 
                         return $this;
             }
@@ -86,7 +86,7 @@
             /**
              * Get the value of cliente
              */
-            public function getPreatador(): array
+            public function getPrestador()
             {
                         return $this->prestador;
             }
@@ -94,11 +94,9 @@
             /**
              * Set the value of cliente
              */
-            public function setPrestador(array $prestador): self
+            public function setPrestador($prestador)
             {
-                        $this->prestador = $prestador;
-
-                        return $this;
+                        $this->prestador[] = $prestador;
             }
     }
 
