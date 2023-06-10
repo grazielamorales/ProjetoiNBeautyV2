@@ -1,34 +1,8 @@
 <?php 
-  Class ReservaDAO{
+  Class ReservaDAO
+  {
 
     public function __construct( private $conexao){}
-
-  
-    public function insertReserva($reserva){
-
-     $sql = "INSERT INTO reserva (DataReserva, HoraReserva, Procedimento, ValorProcedimento, idUsuario, idPrestador)
-                  VALUe (?,?,?,?,?,?) ";
-      try
-			{
-				$stm = $this->conexao->prepare($sql);				
-				$stm->bindValue(1, $reserva->getDtReserva());
-				$stm->bindValue(2, $reserva->getHoraReserva());
-        $stm->bindValue(3, $reserva->getProcedimento());
-        $stm->bindValue(4, $reserva->getValorProcedimento());
-        $stm->bindValue(5, $reserva->getIdUsuario());
-        $stm->bindValue(6, $reserva->getIdPrestador());
-				
-				$stm->execute();
-				$this->conexao = null;
-				return "Reserva efetuada com sucesso!";
-			}
-			catch(PDOException $e)
-			{
-				$this->conexao = null;
-				return "Problema ao cadastrar reserva";
-			}    
-    
-    }
 
     public function listReserva($idUsuario)
     {
@@ -46,33 +20,33 @@
         $this->conexao = null;
 				return "Problema ao verificar agenda por idUsuario";
       }
+    }
 
-    public function insertReserva($reserva){
+    public function insertReserva($reserva)
+    {
 
-     $sql = "INSERT INTO reserva (DataReserva, HoraReserva, Procedimento, ValorProcedimento, idUsuario, idPrestador)
-                  VALUe (?,?,?,?,?,?) ";
-      try
-			{
-				$stm = $this->conexao->prepare($sql);				
-				$stm->bindValue(1, $reserva->getDtReserva());
-				$stm->bindValue(2, $reserva->getHoraReserva());
-        $stm->bindValue(3, $reserva->getProcedimento());
-        $stm->bindValue(4, $reserva->getValorProcedimento());
-        $stm->bindValue(5, $reserva->getIdUsuario());
-        $stm->bindValue(6, $reserva->getIdPrestador());
-				
-				$stm->execute();
-				$this->conexao = null;
-        return "Reserva realizada com sucesso!";
-				
-			}
-			catch(PDOException $e)
-			{
-				$this->conexao = null;
-				return "Problema ao cadastrar reserva";
-			}
-
-     
+      $sql = "INSERT INTO reserva (DataReserva, HoraReserva, Procedimento, ValorProcedimento, idUsuario, idPrestador)
+                    VALUe (?,?,?,?,?,?) ";
+        try
+        {
+          $stm = $this->conexao->prepare($sql);				
+          $stm->bindValue(1, $reserva->getDtReserva());
+          $stm->bindValue(2, $reserva->getHoraReserva());
+          $stm->bindValue(3, $reserva->getProcedimento());
+          $stm->bindValue(4, $reserva->getValorProcedimento());
+          $stm->bindValue(5, $reserva->getIdUsuario());
+          $stm->bindValue(6, $reserva->getIdPrestador());
+          
+          $stm->execute();
+          $this->conexao = null;
+          return "Reserva realizada com sucesso!";
+          
+        }
+        catch(PDOException $e)
+        {
+          $this->conexao = null;
+          return "Problema ao cadastrar reserva";
+        }    
     
     }
 
@@ -94,7 +68,8 @@
       }
     }
 
-    public function upDateReserva($reserva){
+    public function upDateReserva($reserva)
+    {
       $sql = "UPDATE reserva SET DataReserva=?, HoraReserva=? WHERE idReserva=?";
       
       try {
@@ -112,9 +87,9 @@
           $this->conexao = null;
           return "Problema ao alterar reserva!".$e->getMessage();
       }
-    public function upDateReserva(){
-    
     }
+
+    
 
     public function deletReserva($reserva){
       $sql = "DELETE FROM reserva WHERE idReserva = ?";
@@ -151,9 +126,7 @@
         $this->conexao = null;
 				return "Problema ao verificar agenda por idUsuario";
       }
-    }
-
-    
+    }    
    
    
    }

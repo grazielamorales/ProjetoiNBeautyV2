@@ -9,8 +9,7 @@
     require_once "models/Prestador.Class.php";
     require_once "models/PrestadorDAO.Class.php";
    
-
-    if(!isset($_SESSION))
+  if(!isset($_SESSION))
 		session_start();
 
     Class ReservaController{
@@ -40,7 +39,7 @@
             if($_POST)
             {
                //fluxo pra salvar no banco               
-               $reserva = new Reserva(0,DtReserva:$_POST["DataReserva"],HoraReserva:$_POST["HoraReserva"], Procedimento:$_POST["Procedimento"],
+               $reserva = new Reserva(0,DtReserva:$_POST["DataReserva"],HoraReserva:$_POST["HoraReserva"], Procedimento:$_POST['Procedimento'],
                 ValorProcedimento:$_POST["ValorProcedimento"], idUsuario:$_POST["idUsuario"], idPrestador:$_POST["idPrestador"]);
                $reservaDAO = new ReservaDAO($this->param);
                $msg = $reservaDAO->insertReserva($reserva);

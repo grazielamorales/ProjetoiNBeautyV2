@@ -10,11 +10,7 @@
             private $idPrestador,
             private string $status = ""
           
-            private string $Procedimento,
-            private float $ValorProcedimento,
-            private int $idUsuario,
-            private int $idPrestador
-
+            
           
         )
         {}   

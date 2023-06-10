@@ -84,8 +84,7 @@
 				//se tudo certo
 				
 				if(!$erro)
-				{
-                
+				{               
      
 					//inserir BD
 					$prestador = new prestador(0,$_POST["Nome"],$_POST["DtNasc"]

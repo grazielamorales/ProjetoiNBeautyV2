@@ -54,5 +54,58 @@
 
 
 		}
+		 public function getPrest($idPrestador){
+
+            $sql = "SELECT * FROM prestador WHERE idPrestador = ?";
+			try
+			{
+				$stm = $this->conexao->prepare($sql);
+				$stm->bindValue(1, $idPrestador);				
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
+        }
+
+		public function getPrestadores()
+		{
+			$sql = "SELECT * FROM prestador";
+			try
+			{
+				$stm = $this->conexao->prepare($sql);							
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
+		}
+
+		public function getTempoEstimado($idPrestador)
+		{
+			$sql = "SELECT tempoEstimado FROM prestador WHERE idPrestador = ?";
+			try
+			{
+				$stm = $this->conexao->prepare($sql);
+				$stm->bindValue(1, $idPrestador);				
+				$stm->execute();
+				$this->conexao = null;
+				return $stm->fetchAll(PDO::FETCH_OBJ);
+			}
+			catch(PDOException $e)
+			{
+				$this->conexao = null;
+				return "Problema ao verificar usuário pelo e-mail";
+			}
+		}
+    
     }
 ?>
